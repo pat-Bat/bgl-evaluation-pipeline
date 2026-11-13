@@ -115,8 +115,10 @@ class MUSTExtractor(BaseExtractor):
 
                     meta = {
                         META_GLUCOSE: float(row.get(COL_GLUCOSE, np.nan)),
-                        META_CASEID: base_name.split("_")[1],
-                        META_SUBJECTID: base_name.split("_")[2],
+                        #META_CASEID: base_name.split("_")[1],
+                        #META_SUBJECTID: base_name.split("_")[2],
+                        META_CASEID: int(row.get(COL_ID)) * 1000 + int(base_name.split("_")[2]), #e.g. label_02_0002 -> 2002
+                        META_SUBJECTID: int(row.get(COL_ID)),
                         META_FS_HZ: target_fs,
                         META_AGE: float(row.get(COL_AGE, np.nan)),
                         META_GENDER: gender,

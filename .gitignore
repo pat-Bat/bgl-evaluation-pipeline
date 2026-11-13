@@ -30,3 +30,4 @@ logs/
 *.db
 
 artifacts/
+data_script/

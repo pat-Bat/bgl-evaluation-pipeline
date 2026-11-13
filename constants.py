@@ -70,10 +70,21 @@ DATASETS = {
             },
             "force_overwrite": False,
         },
+                "vitaldb_test": {
+            "type": "vitaldb_extractor",
+            "config": {
+                "max_cases": 30,          # nur die ersten 30 OPs mit Glukose
+                "minute_window": 16,
+                "target_fs": 100,
+                "progress": DEFAULT_PROGRESS,
+                "log_level": DEFAULT_LOG_LEVEL,
+            },
+            "force_overwrite": False,
+        },
         "must": {
             "type": "must_extractor",
             "config": {
-                "input_dir": "data/MUST",
+                "input_dir": "../Data/must_v4/must_dataset/PPG_Dataset",
                 "target_fs": 100,
                 "progress": DEFAULT_PROGRESS,
                 "log_level": DEFAULT_LOG_LEVEL,
@@ -826,7 +837,24 @@ ALL_PLANS = (
     + ZEYNALI_PLAN
     + GLOBAL_MEAN_PLAN
 )
-
+TEST_PLAN = [
+    {
+        "datasets": ["must"],
+        "processors": ["global_mean_proc"],
+        "builders": ["global_mean_builder"],
+        "models": ["mean_baseline"],
+        "mode": "train_cv",
+        "force_train": False,
+    },
+    {
+        "datasets": ["must"],
+        "processors": ["sen_gupta_proc"],
+        "builders": ["sen_gupta_builder"],
+        "models": ["xgb_std_feat_nospo"],   # MUST hat kein SpO2
+        "mode": "train_cv",
+        "force_train": False,
+    },
+]
 PIPELINE = {
     "name": "bench",
     "artifacts_root": "artifacts/bench",
@@ -834,5 +862,6 @@ PIPELINE = {
     "processors": PROCESSORS,
     "builders": BUILDERS,
     "models": MODELS,
-    "plan": ALL_PLANS,
+    "plan": TEST_PLAN,
 }
+
