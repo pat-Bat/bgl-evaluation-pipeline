@@ -13,6 +13,7 @@ from .base import (
     ATTR_SCHEMA_VERSION,
     ATTR_TOTAL_RECS,
     ATTR_TOTAL_SUBJS,
+    ATTR_PPG_MODE,
     KEY_PPG_RAW,
     KEY_SPO2_RAW,
     META_AGE,
@@ -24,6 +25,7 @@ from .base import (
     META_HEIGHT,
     META_SUBJECTID,
     META_WEIGHT,
+    META_DIABETES,
     BaseExtractor,
     register_extractor,
 )
@@ -48,6 +50,7 @@ CONF_INPUT_DIR = "input_dir"
 CONF_TARGET_FS = "target_fs"
 CONF_ORIG_FS = "orig_fs"
 
+PPG_MODE = "reflective"
 
 @register_extractor(EXTRACTOR_NAME_MUST)
 class MUSTExtractor(BaseExtractor):
@@ -72,6 +75,7 @@ class MUSTExtractor(BaseExtractor):
             f_out.attrs[ATTR_EXTRACTOR_TYPE] = EXTRACTOR_NAME_MUST
             f_out.attrs[META_FS_HZ] = target_fs
             f_out.attrs[CONF_ORIG_FS] = orig_fs
+            f_out.attrs[ATTR_PPG_MODE] = PPG_MODE
 
             count = 0
             skipped = 0
@@ -125,6 +129,7 @@ class MUSTExtractor(BaseExtractor):
                         META_WEIGHT: float(row.get(COL_WEIGHT, np.nan)),
                         META_HEIGHT: float(row.get(COL_HEIGHT, np.nan)),
                         META_BMI: bmi,
+                        META_DIABETES: np.nan,  # MUST dataset has no diabetes information
                     }
 
                     group_name = f"case_{base_name}"

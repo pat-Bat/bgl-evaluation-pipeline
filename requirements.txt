@@ -17,3 +17,4 @@ vitaldb==1.6.0
 pybaselines==1.2.1
 optuna==4.8.0
 optuna-integration==4.8.0
+wfdb==4.3.1

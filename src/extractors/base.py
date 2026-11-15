@@ -18,6 +18,13 @@ META_HEIGHT = "height"
 META_WEIGHT = "weight"
 META_BMI = "BMI"
 META_SUBJECTID = "subjectid"
+META_DIABETES = "diabetes_type"
+
+DT_NONE = 0 #no diabetes
+DT_T1 = 1 #type 1 diabetes
+DT_T2 = 2 #type 2 diabetes
+DT_UNSPECIFIED = 3 #dianbetes type not specified
+
 
 ATTR_AVAIL_PREFIX = "avail_"
 ATTR_AVAIL_SPO2 = "avail_spo2_signal"
@@ -26,6 +33,8 @@ ATTR_EXTRACTOR_TYPE = "extractor_type"
 ATTR_TOTAL_RECS = "total_recordings"
 ATTR_TOTAL_SUBJS = "total_subjects"
 ATTR_ADDITIONAL_SIG = "additional_signal_names"
+ATTR_PPG_MODE = "ppg_mode"
+
 
 COMPRESSION_ALGO = "gzip"
 STEP_NAME_EXTRACTOR = "extractor"

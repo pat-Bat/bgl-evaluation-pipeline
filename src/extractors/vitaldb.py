@@ -13,7 +13,10 @@ from .base import (
     ATTR_SCHEMA_VERSION,
     ATTR_TOTAL_RECS,
     ATTR_TOTAL_SUBJS,
+    ATTR_PPG_MODE,
     COMPRESSION_ALGO,
+    DT_NONE,
+    DT_UNSPECIFIED,
     META_AGE,
     META_BMI,
     META_CASEID,
@@ -21,6 +24,7 @@ from .base import (
     META_GENDER,
     META_GLUCOSE,
     META_SUBJECTID,
+    META_DIABETES,
     BaseExtractor,
     register_extractor,
 )
@@ -38,6 +42,8 @@ CONF_MAX_CASES = "max_cases"
 CONF_TOTAL_WINDOW_MIN = "minute_window"
 CONF_FS_HZ = "target_fs"
 CONF_MAX_WORKERS = "max_workers"
+
+PPG_MODE = "transmissive"
 
 SIGNAL_CONFIG = {
     "ppg": {"track": "SNUADC/PLETH", "required": True, "index": 0},
@@ -105,6 +111,7 @@ class VitalDBExtractor(BaseExtractor):
             f_out.attrs[ATTR_SCHEMA_VERSION] = VERSION
             f_out.attrs[ATTR_EXTRACTOR_TYPE] = EXTRACTOR_NAME
             f_out.attrs[META_FS_HZ] = fs_hz
+            f_out.attrs[ATTR_PPG_MODE] = PPG_MODE
 
             interval = 1.0 / fs_hz
             case_map = {cid: g for cid, g in case_groups}
@@ -218,6 +225,8 @@ class VitalDBExtractor(BaseExtractor):
                                         META_GENDER: (
                                             1 if str(row["sex"]).upper() == "M" else 0
                                         ),
+                                        META_DIABETES: (np.nan if pd.isna(row["preop_dm"])
+                                                        else DT_UNSPECIFIED if row["preop_dm"] == 1 else DT_NONE), #Type unspecified for VitalDB
                                         META_BMI: row["bmi"],
                                         "dt_sec": dt,
                                         "height": row["height"],

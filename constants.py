@@ -91,6 +91,16 @@ DATASETS = {
             },
             "force_overwrite": True,
         },
+        "berki": {
+                    "type": "berki_extractor",
+                    "config": {
+                        "input_dir": "../Data/berki/wfdb_data",
+                        "target_fs": 100,
+                        "progress": DEFAULT_PROGRESS,
+                        "log_level": DEFAULT_LOG_LEVEL,
+                    },
+                    "force_overwrite": True,
+                },
     }
 PROCESSORS = {
         "zeynali_proc": {
@@ -839,7 +849,7 @@ ALL_PLANS = (
 )
 TEST_PLAN = [
     {
-        "datasets": ["must"],
+        "datasets": ["berki"],
         "processors": ["global_mean_proc"],
         "builders": ["global_mean_builder"],
         "models": ["mean_baseline"],
@@ -847,7 +857,7 @@ TEST_PLAN = [
         "force_train": False,
     },
     {
-        "datasets": ["must"],
+        "datasets": ["berki"],
         "processors": ["sen_gupta_proc"],
         "builders": ["sen_gupta_builder"],
         "models": ["xgb_std_feat_nospo"],   # MUST hat kein SpO2

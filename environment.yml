@@ -28,6 +28,7 @@ dependencies:
 
   - pip:
       - vitaldb==1.6.0
+      - wfdb==4.3.1
       - error_grids==0.1.0
       - neurokit2==0.2.12
       - tensorflow==2.20.0
