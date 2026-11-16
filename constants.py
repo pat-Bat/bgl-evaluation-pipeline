@@ -84,7 +84,7 @@ DATASETS = {
         "must": {
             "type": "must_extractor",
             "config": {
-                "input_dir": "../Data/must_v4/must_dataset/PPG_Dataset",
+                "input_dir": "dataset_data/must_v4/must_dataset/PPG_Dataset",
                 "target_fs": 100,
                 "progress": DEFAULT_PROGRESS,
                 "log_level": DEFAULT_LOG_LEVEL,
@@ -94,7 +94,7 @@ DATASETS = {
         "berki": {
                     "type": "berki_extractor",
                     "config": {
-                        "input_dir": "../Data/berki/wfdb_data",
+                        "input_dir": "dataset_data/Berki/wfdb_data",
                         "target_fs": 100,
                         "progress": DEFAULT_PROGRESS,
                         "log_level": DEFAULT_LOG_LEVEL,
@@ -104,7 +104,7 @@ DATASETS = {
         "mimic3": {
                             "type": "mimic3_extractor",
                             "config": {
-                                "input_dir": "../Data/mimic3",
+                                "input_dir": "dataset_data/mimic3",
                                 "target_fs": 100,
                                 "progress": DEFAULT_PROGRESS,
                                 "log_level": DEFAULT_LOG_LEVEL,

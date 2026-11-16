@@ -12,7 +12,7 @@ import pandas as pd
 import wfdb
 
 
-DATA = Path(__file__).resolve().parents[3] / "Data" / "mimic3"
+DATA = Path(__file__).resolve().parents[2] / "dataset_data" / "mimic3"
 
 #BASE = Path(__file__).resolve().parents[1]
 CLIN = DATA / "clinical"

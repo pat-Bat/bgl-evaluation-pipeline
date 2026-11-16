@@ -11,7 +11,8 @@ import re
 import pandas as pd
 
 
-DATA = Path(__file__).resolve().parents[3] / "Data" / "MOVER"
+DATA = Path(__file__).resolve().parents[2] / "dataset_data" / "MOVER"
+
 EMR = DATA / "EPIC_EMR" / "EPIC_EMR" / "EMR"
 OUT = DATA / "derived"
 
