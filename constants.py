@@ -101,6 +101,17 @@ DATASETS = {
                     },
                     "force_overwrite": True,
                 },
+        "mimic3": {
+                            "type": "mimic3_extractor",
+                            "config": {
+                                "input_dir": "../Data/mimic3",
+                                "target_fs": 100,
+                                "progress": DEFAULT_PROGRESS,
+                                "log_level": DEFAULT_LOG_LEVEL,
+                                "max_nan_frac": 0.05,
+                            },
+                            "force_overwrite": True,
+                        },
     }
 PROCESSORS = {
         "zeynali_proc": {
@@ -860,7 +871,7 @@ TEST_PLAN = [
         "datasets": ["berki"],
         "processors": ["sen_gupta_proc"],
         "builders": ["sen_gupta_builder"],
-        "models": ["xgb_std_feat_nospo"],   # MUST hat kein SpO2
+        "models": ["xgb_std_feat_nospo"],
         "mode": "train_cv",
         "force_train": False,
     },

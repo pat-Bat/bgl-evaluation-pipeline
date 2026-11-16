@@ -57,7 +57,7 @@ class BERKIExtractor(BaseExtractor):
     """Extract BERKI hea files into the standardized HDF5 schema."""
 
     def _run_impl(self, out_path: Path) -> Path:
-        """Parse per-subject CSV pairs, resample PPG, and persist one group per sample."""
+        """Groups the metadata and the record, which is also resampled"""
         input_dir = Path(self.config[CONF_INPUT_DIR])
         target_fs = int(self.config.get(CONF_TARGET_FS, 100))
         
@@ -69,7 +69,7 @@ class BERKIExtractor(BaseExtractor):
         
 
         if not hea_files:
-            self.log(f"BERKI: no hea files found in Labels folder: {input_dir}.")
+            self.log(f"BERKI: no hea files found in {input_dir}.")
             return out_path
 
         with h5py.File(out_path, "w") as f_out:
@@ -124,7 +124,7 @@ class BERKIExtractor(BaseExtractor):
                         META_WEIGHT: float(sub.get(COL_WEIGHT, np.nan)),
                         META_HEIGHT: float(sub.get(COL_HEIGHT, np.nan)),
                         META_BMI: bmi,
-                        META_DIABETES: DT_T1 if sub[COL_DIABETES] == "Yes" else DT_NONE,  # BERKI dataset has only T1 diabetic subjects
+                        META_DIABETES: DT_T1 if sub[COL_DIABETES] == "Yes" else DT_NONE,  # BERKI dataset has only T1 or Non diabetic subjects
                     }
 
                     group_name = f"case_{rec.record_name}"

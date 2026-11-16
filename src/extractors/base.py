@@ -19,6 +19,7 @@ META_WEIGHT = "weight"
 META_BMI = "BMI"
 META_SUBJECTID = "subjectid"
 META_DIABETES = "diabetes_type"
+META_NAN_FRACTION = "nan_fraction"
 
 DT_NONE = 0 #no diabetes
 DT_T1 = 1 #type 1 diabetes
@@ -171,7 +172,7 @@ class BaseExtractor(ProgressReporter):
             META_FS_HZ: 100,
             META_AGE: np.nan,
             META_GENDER: np.nan,
-            META_BMI: np.nan,
+            #META_BMI: np.nan,
         }
 
         final_meta = required_meta.copy()
