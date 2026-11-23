@@ -39,7 +39,6 @@ EXTRACTOR_NAME_MIMIC3 = "mimic3_extractor"
 VERSION = 1
 
 
-
 STR_WAVES = "waves"
 STR_DER = "derived"
 STR_CLINICAL = "clinical"
