@@ -70,7 +70,7 @@ DATASETS = {
             },
             "force_overwrite": False,
         },
-                "vitaldb_test": {
+        "vitaldb_test": {
             "type": "vitaldb_extractor",
             "config": {
                 "max_cases": 30,          # nur die ersten 30 OPs mit Glukose
@@ -92,26 +92,52 @@ DATASETS = {
             "force_overwrite": True,
         },
         "berki": {
-                    "type": "berki_extractor",
-                    "config": {
-                        "input_dir": "dataset_data/Berki/wfdb_data",
-                        "target_fs": 100,
-                        "progress": DEFAULT_PROGRESS,
-                        "log_level": DEFAULT_LOG_LEVEL,
-                    },
-                    "force_overwrite": True,
+            "type": "berki_extractor",
+            "config": {
+                    "input_dir": "dataset_data/Berki/wfdb_data",
+                    "target_fs": 100,
+                    "progress": DEFAULT_PROGRESS,
+                    "log_level": DEFAULT_LOG_LEVEL,
                 },
+            "force_overwrite": True,
+        },
         "mimic3": {
-                            "type": "mimic3_extractor",
-                            "config": {
-                                "input_dir": "dataset_data/mimic3",
-                                "target_fs": 100,
-                                "progress": DEFAULT_PROGRESS,
-                                "log_level": DEFAULT_LOG_LEVEL,
-                                "max_nan_frac": 0.05,
-                            },
-                            "force_overwrite": True,
-                        },
+            "type": "mimic3_extractor",
+            "config": {
+                    "input_dir": "dataset_data/mimic3",
+                    "target_fs": 100,
+                    "progress": DEFAULT_PROGRESS,
+                    "log_level": DEFAULT_LOG_LEVEL,
+                    "max_nan_frac": 0.05,
+            },
+        "force_overwrite": True,
+        },
+        "mover_epic": {
+            "type": "mover_extractor",
+            "config": {
+                    "input_dir": "dataset_data/mover",
+                    "part": "epic",
+                    "target_fs": 100,
+                    "progress": DEFAULT_PROGRESS,
+                    "log_level": DEFAULT_LOG_LEVEL,
+                    "max_nan_frac": 0.05,
+                    "min_windows": 2,
+            },
+        "force_overwrite": True,
+        },
+        "mover_sis": {
+            "type": "mover_extractor",
+            "config": {
+                    "input_dir": "dataset_data/mover",
+                    "part": "sis",
+                    "target_fs": 100,
+                    "progress": DEFAULT_PROGRESS,
+                    "log_level": DEFAULT_LOG_LEVEL,
+                    "max_nan_frac": 0.05,
+                    "min_windows": 2,
+            },
+        "force_overwrite": True,
+        },
     }
 PROCESSORS = {
         "zeynali_proc": {

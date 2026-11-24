@@ -20,6 +20,7 @@ META_BMI = "BMI"
 META_SUBJECTID = "subjectid"
 META_DIABETES = "diabetes_type"
 META_NAN_FRACTION = "nan_fraction"
+META_INSULIN = "insulin"
 
 DT_NONE = 0 #no diabetes
 DT_T1 = 1 #type 1 diabetes
@@ -35,6 +36,7 @@ ATTR_TOTAL_RECS = "total_recordings"
 ATTR_TOTAL_SUBJS = "total_subjects"
 ATTR_ADDITIONAL_SIG = "additional_signal_names"
 ATTR_PPG_MODE = "ppg_mode"
+ATTR_PART = "part"
 
 
 COMPRESSION_ALGO = "gzip"

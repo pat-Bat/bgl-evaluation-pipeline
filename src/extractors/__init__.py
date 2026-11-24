@@ -1,4 +1,4 @@
-from . import custom, must, vitaldb, berki, mimic3
+from . import custom, must, vitaldb, berki, mimic3, mover
 from .base import EXTRACTORS
 
 

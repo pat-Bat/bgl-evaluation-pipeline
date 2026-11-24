@@ -27,8 +27,10 @@ def fetch_window(row, half): # fetches a PPG window for a glucose measurement, s
     fs = float(row["fs"]) # sampling frequency
     rec_len = int((row["record_end"] - row["record_start"]).total_seconds() * fs) # number of requested datapoints
     center = (row["time"] - row["record_start"]).total_seconds() * fs 
-    want_from, want_to = int(center - half * fs), int(center + half * fs) # desired window of datapoints
-    sampfrom, sampto = max(0, want_from), min(rec_len, want_to) # edge case (exceding the rec length)
+    want_from = int(center - half * fs)
+    want_to = int(center + half * fs) # desired window of datapoints
+    sampfrom = max(0, want_from)
+    sampto = min(rec_len, want_to) # edge case (exceding the rec length)
     clipped = (sampfrom != want_from) or (sampto != want_to) # true if windows were clipped
 
 
